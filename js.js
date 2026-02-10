@@ -38,3 +38,31 @@ function showTime(h, m, s) {
 	}, 1000);
 }
 showTime(hourDisplay, minuteDisplay, secondsDisplay);
+
+const codeCover = getById('code-cover');
+
+function toggleCodeCover() {
+	const testBtn = getById('test-btn');
+	const codeBox = getById('code-box');
+	const entryCode = '4787';
+
+	const activeCover = 'active-cover';
+	testBtn.addEventListener(click, () => {
+		if (!codeCover.classList.contains(activeCover) && codeBox.value === entryCode) {
+			toggleClass(codeCover, activeCover);
+			textContent(testBtn, 'Exit');
+			codeBox.style.display = 'none';
+		} else if (
+			(!codeCover.classList.contains(activeCover) && codeBox.value !== entryCode) ||
+			(!codeCover.classList.contains(activeCover) && codeBox.value == '')
+		) {
+			alert('Entry Code Incorrect');
+		} else if (codeCover.classList.contains(activeCover)) {
+			toggleClass(codeCover, activeCover);
+			codeBox.style.display = 'block';
+			textContent(testBtn, 'Enter');
+		}
+	});
+}
+
+toggleCodeCover();
