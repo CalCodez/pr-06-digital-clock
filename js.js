@@ -15,54 +15,40 @@ const keyup = 'keyup';
 const flexActive = 'flex-active';
 const flexInactive = 'flex-inactive';
 
-const dateDisplay = getById('dateDisplay');
-const hourDisplay = getById('hourDisplay');
-const minuteDisplay = getById('minuteDisplay');
-const secondsDisplay = getById('secondsDisplay');
+const password = '4787';
 
-function showDate(display) {
-	const today = new Date();
-	const region = 'en-US';
-	const options = { weekday: 'long', year: 'numeric', month: 'long', day: '2-digit' };
-	textContent(display, today.toLocaleDateString(region, options));
-}
-showDate(dateDisplay);
+const loginPage = getById('login-page');
+const loginButton = getById('login-btn');
+const passwordInput = getById('password-input');
+const loginPageActive = 'loginActive';
+const sideNavBar = getById('side-nav-bar');
+const loginForm = getById('login-form');
+const exitLogin = getById('exit-login');
+const userName = getById('user-name');
 
-function showTime(h, m, s) {
-	setInterval(() => {
-		const time = new Date();
-		textContent(h, time.getHours());
-		textContent(m, time.getMinutes());
-		textContent(s, time.getSeconds());
-		// console.log(time.getHours());
-	}, 1000);
-}
-showTime(hourDisplay, minuteDisplay, secondsDisplay);
+function validLogin() {
+	loginButton.addEventListener(click, () => {
+		if (passwordInput.value === password && !loginPage.classList.contains(loginPageActive)) {
+			toggleClass(loginPage, loginPageActive);
+			toggleClass(loginForm, flexInactive);
+			textContent(userName, 'Calvin'); //obj.user
 
-const codeCover = getById('code-cover');
-
-function toggleCodeCover() {
-	const testBtn = getById('test-btn');
-	const codeBox = getById('code-box');
-	const entryCode = '4787';
-
-	const activeCover = 'active-cover';
-	testBtn.addEventListener(click, () => {
-		if (!codeCover.classList.contains(activeCover) && codeBox.value === entryCode) {
-			toggleClass(codeCover, activeCover);
-			textContent(testBtn, 'Exit');
-			codeBox.style.display = 'none';
-		} else if (
-			(!codeCover.classList.contains(activeCover) && codeBox.value !== entryCode) ||
-			(!codeCover.classList.contains(activeCover) && codeBox.value == '')
-		) {
-			alert('Entry Code Incorrect');
-		} else if (codeCover.classList.contains(activeCover)) {
-			toggleClass(codeCover, activeCover);
-			codeBox.style.display = 'block';
-			textContent(testBtn, 'Enter');
+			setTimeout(() => {
+				toggleClass(sideNavBar, flexInactive);
+			}, 400);
 		}
+
+		exitLogin.addEventListener(click, () => {
+			if (loginPage.classList.contains(loginPageActive)) {
+				toggleClass(loginPage, loginPageActive);
+				toggleClass(sideNavBar, flexInactive);
+
+				setTimeout(() => {
+					toggleClass(loginForm, flexInactive);
+				}, 300);
+			}
+		});
 	});
 }
 
-toggleCodeCover();
+validLogin();

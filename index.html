@@ -10,20 +10,24 @@
 		<script src="./js.js" defer></script>
 	</head>
 	<body>
-		<div class="code-cover" id="code-cover">
-			<input id="code-box" name="code-box" class="code-box" type="number" />
-			<label for="code-box">Enter Code</label>
-			<button class="test-btn" id="test-btn">Enter</button>
-		</div>
-		<img id="main-background" src="./assets/main_bg.jpg" alt="abstract background" />
-		<div class="clock-wrapper container">
-			<div class="date-bar container">
-				<h2 id="dateDisplay" class="date-display container">------</h2>
-			</div>
-			<div class="time-wrapper container">
-				<span id="hourDisplay" class="container">HH</span>
-				<span id="minuteDisplay" class="container">MM</span>
-				<span id="secondsDisplay" class="container"></span>
+		<div class="mainParentContainer">
+			<div class="login-page" id="login-page">
+				<form action="#" id="login-form" class="login-form container">
+					<h1 class="login-header">How You Get Here?</h1>
+					<input id="password-input" type="password" name="login-password" />
+					<label for="login-password">Enter Your Damn Code</label>
+					<button id="login-btn" class="login-btn" type="submit">Login</button>
+				</form>
+
+				<div class="side-nav-bar container flex-inactive" id="side-nav-bar">
+					<div class="container side-nav">Time</div>
+					<div class="container side-nav">Ph1</div>
+					<div class="container side-nav">Ph3</div>
+					<div class="container side-nav">Ph4</div>
+					<div class="container side-nav">Ph5</div>
+					<div id="user-name" class="container side-nav">Name</div>
+					<div id="exit-login" class="container side-nav">Exit</div>
+				</div>
 			</div>
 		</div>
 	</body>
