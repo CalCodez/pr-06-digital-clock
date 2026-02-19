@@ -9,6 +9,8 @@
 	right: 0;
 	bottom: 0;
 	background: linear-gradient(var(--project-color-light), darkblue);
+	justify-content: center;
+	align-items: center;
 }
 
 .login-page {
@@ -97,6 +99,76 @@
 	display: flex;
 	place-content: center;
 	place-items: center;
+	font-size: 1rem;
+	font-weight: 600;
+	border: 1px outset var(--accent-light);
+	box-shadow: 2px 2px 2px var(--black);
+	color: var(--font-color);
+	background: linear-gradient(45deg, var(--project-color-light), var(--project-color-dark));
+}
+
+.side-nav:not(.logo-span) {
+	height: 40px;
+}
+
+.side-nav:not(.logo-span):hover {
+	transform: scale(1.08);
+	background: var(--project-color-main);
+	transition: all ease 0.2s;
+}
+
+.side-nav:where(.logo-span) {
+	font-size: 3rem;
+	font-weight: 700;
+	text-shadow: var(--text-shadow);
+	width: 60px;
+	border-radius: 50%;
+	margin-bottom: -50px;
+}
+
+/* **Entry Container */
+.entry-container {
+	width: 40vw;
+	height: 70vh;
+	outline: var(--olY);
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.entry-container > div {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	color: var(--font-color);
+	align-items: center;
+}
+
+.entry-header-container {
+	height: 80px;
+	font-size: 2rem;
+	text-shadow: var(--text-shadow);
+	outline: var(--olR);
+}
+
+.entry-video-container {
+	height: 300px;
+	outline: var(--olY);
+}
+
+.entry-statement-container {
+	height: 120px;
+	outline: var(--ol);
+	font-size: 1rem;
+	font-weight: 600;
+	text-shadow: 1px 1px 1px var(--black);
+	text-align: center;
+	line-height: 2;
+	letter-spacing: 1.5px;
+}
+
+.explore-more {
+	text-decoration: 2px underline black;
+	color: turquoise;
 }
 
 /* ++Flex Toggles */
