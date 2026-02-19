@@ -24,14 +24,12 @@ const loginPageActive = 'loginActive';
 const sideNavBar = getById('side-nav-bar');
 const loginForm = getById('login-form');
 const exitLogin = getById('exit-login');
-const userName = getById('user-name');
 
 function validLogin() {
 	loginButton.addEventListener(click, () => {
 		if (passwordInput.value === password && !loginPage.classList.contains(loginPageActive)) {
 			toggleClass(loginPage, loginPageActive);
 			toggleClass(loginForm, flexInactive);
-			textContent(userName, 'Calvin'); //obj.user
 
 			setTimeout(() => {
 				toggleClass(sideNavBar, flexInactive);
