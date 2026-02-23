@@ -14,39 +14,3 @@ const click = 'click';
 const keyup = 'keyup';
 const flexActive = 'flex-active';
 const flexInactive = 'flex-inactive';
-
-const password = '4787';
-
-const loginPage = getById('login-page');
-const loginButton = getById('login-btn');
-const passwordInput = getById('password-input');
-const loginPageActive = 'loginActive';
-const sideNavBar = getById('side-nav-bar');
-const loginForm = getById('login-form');
-const exitLogin = getById('exit-login');
-
-function validLogin() {
-	loginButton.addEventListener(click, () => {
-		if (passwordInput.value === password && !loginPage.classList.contains(loginPageActive)) {
-			toggleClass(loginPage, loginPageActive);
-			toggleClass(loginForm, flexInactive);
-
-			setTimeout(() => {
-				toggleClass(sideNavBar, flexInactive);
-			}, 400);
-		}
-
-		exitLogin.addEventListener(click, () => {
-			if (loginPage.classList.contains(loginPageActive)) {
-				toggleClass(loginPage, loginPageActive);
-				toggleClass(sideNavBar, flexInactive);
-
-				setTimeout(() => {
-					toggleClass(loginForm, flexInactive);
-				}, 300);
-			}
-		});
-	});
-}
-
-validLogin();
