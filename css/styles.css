@@ -6,19 +6,63 @@ header {
 	align-items: center;
 }
 
+.login-page {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 3;
+	background-color: var(--black);
+	place-content: center;
+	place-items: center;
+}
+
+.login-form {
+	height: 500px;
+	width: 400px;
+	display: flex;
+	flex-direction: column;
+	color: var(--project-color-light);
+	background-color: var(--project-color-dark);
+	border-radius: 20px;
+	font-family: var(--project-font);
+}
+
+.login-form input {
+	width: 70%;
+	height: 30px;
+	border-radius: 8px;
+	background-color: var(--project-color-light);
+}
+
+.login-btn {
+	width: 80px;
+	height: 30px;
+	border-radius: 8px;
+	background: var(--accent);
+	font-size: 16px;
+	font-family: var(--project-font);
+}
+
+.login-btn:hover {
+	transform: scale(1.1);
+	transition: all ease-in 0.2s;
+	background-color: var(--accent-bright);
+	cursor: pointer;
+}
+
 .logo-span {
 	height: 70px;
 	width: 70px;
 	place-content: center;
 	text-align: center;
 	font-size: 3rem;
-	color: var(--accent-light);
-	text-shadow: var(--text-shadow);
+	color: var(--font-color);
+	text-shadow: 1px 1px 1px var(--accent-bright);
 	font-weight: 600;
 	margin-left: 20px;
 	border-radius: 50%;
-	border: 2px solid var(--black);
-	box-shadow: 1px 1px 1px 1px var(--black);
+	border: 2px solid var(--accent-bright);
+	font-family: var(--logo-font);
 }
 
 .main-nav {
@@ -43,9 +87,8 @@ header {
 	color: var(--accent-bright);
 	transition: all ease-in 0.2s;
 }
-
 .main-nav button:hover {
-	background-color: var(--project-color-dark);
+	color: var(--project-color-dark);
 	cursor: pointer;
 }
 
@@ -55,7 +98,56 @@ header {
 	border-radius: 20px;
 	padding: 5px;
 	font-size: 16px;
-	background: goldenrod;
+	background: var(--accent-bright);
 	color: var(--black);
 	font-weight: 600;
+}
+
+/* ++Hero Section */
+.hero-section {
+	width: 100%;
+	height: auto;
+	margin: 80px 0;
+	position: relative;
+}
+
+.hero-section img {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+
+.hero-section .container {
+	height: 420px;
+	width: 100%;
+	z-index: 2;
+	flex-direction: column;
+}
+
+.hero-section h1 {
+	color: var(--font-color);
+	font-family: var(--project-font);
+	font-size: 3rem;
+	text-align: center;
+	text-shadow: var(--text-shadow);
+	/* outline: 2px solid white; */
+}
+
+.hero-section h2 {
+	color: var(--accent-bright);
+	font-size: 2rem;
+	text-shadow: var(--text-shadow);
+	letter-spacing: 1.2px;
+	font-weight: 600;
+	font-family: var(--project-font);
+	/* outline: 2px solid white; */
+}
+
+.flex-active {
+	display: flex;
+}
+
+.flex-inactive {
+	display: none;
 }

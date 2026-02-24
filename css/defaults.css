@@ -1,4 +1,5 @@
 :root {
+	/* Outlines */
 	--black: #000000;
 	--white: #ffffff;
 	--ol: 1px solid white;
@@ -8,15 +9,22 @@
 	--olO: 1px solid orange;
 	--olG: 1px solid green;
 
-	--project-color-main: #151667;
-	--project-color-light: #0f52ba;
-	--project-color-dark: #00008b;
-	--accent-light: #ebebeb;
-	--accent-dark: #aeb0b0;
-	--accent-bright: goldenrod;
-	--font-color: silver;
+	/* Colors */
+	--project-color-main: #8c6e63;
+	--project-color-light: #d3a376;
+	--project-color-dark: #3e2522;
+	--accent: #ffe062;
+	--accent-bright: #ff6700;
+	--font-color: #d3a376;
+
+	/* Fonts */
+	--logo-font: 'KL1MonoCase', sans-serif;
+	--project-font: 'DynaPuff', sans-serif;
+
+	/* Shadows */
 	--text-shadow: 2px 2px 3px var(--black);
 }
+
 * {
 	box-sizing: border-box;
 }
@@ -25,19 +33,25 @@ html,
 body {
 	display: flex;
 	height: 100%;
-	justify-content: center;
 	width: 100%;
 	padding: 15px 8px;
-	background: var(--project-color-main);
+	background: var(--project-color-dark);
 }
+html {
+	justify-content: center;
+}
+
 body {
 	padding: 0;
 	margin: 0;
 	width: 100%;
 	height: 100%;
 	max-width: 1480px;
-	background: var(--project-color-main);
+	background: linear-gradient(var(--project-color-main), var(--project-color-dark));
+	flex-direction: column;
+	position: relative;
 }
+
 a,
 li {
 	text-decoration: none;
