@@ -65,7 +65,7 @@ li {
 }
 
 .cta-btn {
-	width: 80px;
+	width: 120px;
 	height: 40px;
 	border-radius: 20px;
 	padding: 5px;
@@ -74,4 +74,8 @@ li {
 	color: var(--black);
 	font-weight: 600;
 	place-content: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
 }
