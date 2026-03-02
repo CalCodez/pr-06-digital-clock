@@ -13,22 +13,12 @@
 		<script src="./js.js" defer></script>
 	</head>
 	<body>
-		<div id="login-page" class="login-page container">
-			<form action="#" id="login-form" class="login-form container">
-				<h1 class="login-header">How You Get Here?</h1>
-				<input id="password-input" type="password" name="login-password" />
-				<label for="login-password">Enter Your Damn Code</label>
-				<button id="login-btn" class="login-btn" type="submit">Login</button>
-			</form>
-		</div>
-
 		<header>
 			<span class="logo-span">C</span>
 			<nav class="main-nav">
 				<a href="#">Stories</a>
 				<a href="#">Videos</a>
 				<a href="#">Notes</a>
-				<button class="cta-btn" id="exit-btn">Exit</button>
 			</nav>
 		</header>
 
@@ -41,7 +31,20 @@
 			<div class="get-help-container container">
 				<p>Do you or someone you know suffer from Depression?</p>
 				<a class="cta-btn" href="https://www.nami.org/" target="_blank">Get Help</a>
+				<a id="go-deep-btn" class="cta-btn go-deep-button" href="#">Go Deep</a>
 			</div>
 		</section>
+
+		<div id="login-page" class="login-page container">
+			<form action="#" id="login-form" class="login-form container">
+				<h1 class="login-header">How You Get Here?</h1>
+				<input action="login()" id="password-input" type="password" name="login-password" />
+				<label id="password-label" for="login-password">Enter The Damn Code</label>
+				<div class="login-form-button-container">
+					<a id="login-btn" class="login-btn cta-btn">LOGIN</a>
+					<a class="login-btn cta-btn" id="exit-btn">EXIT</a>
+				</div>
+			</form>
+		</div>
 	</body>
 </html>

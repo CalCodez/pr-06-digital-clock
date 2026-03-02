@@ -15,6 +15,20 @@ const keyup = 'keyup';
 const flexActive = 'flex-active';
 const flexInactive = 'flex-inactive';
 
+function triggerLogin() {
+	const goDeepButton = getById('go-deep-btn');
+	const loginPage = getById('login-page');
+
+	goDeepButton.addEventListener(click, () => {
+		if (!loginPage.classList.contains(flexActive)) {
+			toggleClass(loginPage, flexActive);
+			console.log('Trigger 0');
+		}
+	});
+}
+
+triggerLogin();
+
 function login() {
 	const loginPage = getById('login-page');
 	const passwordInput = getById('password-input');
@@ -23,16 +37,53 @@ function login() {
 	const exitButton = getById('exit-btn');
 
 	loginButton.addEventListener(click, () => {
-		if (passwordInput.value === password && !loginPage.classList.contains(flexInactive)) {
+		if (passwordInput.value === password) {
 			toggleClass(loginPage, flexInactive);
+			loginButton.href = './darkMemory.html';
+			console.log('Trigger1');
+		} else if (passwordInput.value === '') {
+			alert('You Must Enter a passcode!!!');
 		} else {
 			alert('Passcode Is Incorrect!');
 		}
 	});
 
+	passwordInput.addEventListener('keydown', (e) => {
+		const passwordLabel = getById('password-label');
+
+		if (e.key === 'Enter' && passwordInput.value === password) {
+			loginButton.style.backgroundColor = 'var(--accent-bright)';
+			loginButton.style.color = 'var(--accent)';
+			loginButton.style.transform = 'scale(1.2)';
+			setTimeout(() => {
+				loginButton.style.transform = 'scale(1)';
+				loginButton.style.backgroundColor = 'var(--accent)';
+				loginButton.style.color = 'var(--project-color-dark)';
+			}, 1000);
+		} else if (e.key === 'Enter' && passwordInput.value === '') {
+			passwordLabel.style.color = 'var(--accent-bright)';
+			passwordLabel.style.transform = 'scale(1.2)';
+			setTimeout(() => {
+				passwordLabel.style.color = 'var(--font-color)';
+				passwordLabel.style.transform = 'scale(1)';
+			}, 1000);
+		} else if (e.key == 'Enter' && passwordInput.value !== password) {
+			passwordLabel.style.color = 'var(--accent-bright)';
+			passwordLabel.style.transform = 'scale(1.2)';
+			textContent(passwordLabel, 'Incorrect Code!!');
+			setTimeout(() => {
+				passwordLabel.style.color = 'var(--font-color)';
+
+				passwordLabel.style.transform = 'scale(1)';
+				textContent(passwordLabel, 'Enter The Damn Code');
+			}, 2000);
+		}
+	});
+
 	exitButton.addEventListener(click, () => {
-		if (loginPage.classList.contains(flexInactive)) {
-			toggleClass(loginPage, flexInactive);
+		if (loginPage.classList.contains(flexActive)) {
+			toggleClass(loginPage, flexActive);
+			console.log('Trigger 2');
 		}
 	});
 }
