@@ -78,4 +78,6 @@ li {
 	justify-content: center;
 	align-items: center;
 	text-align: center;
+	border: 2px solid var(--project-color-dark);
+	box-shadow: 2px 2px 2px var(--black);
 }

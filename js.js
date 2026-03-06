@@ -15,74 +15,40 @@ const keyup = 'keyup';
 const flexActive = 'flex-active';
 const flexInactive = 'flex-inactive';
 
-function triggerLogin() {
-	const goDeepButton = getById('go-deep-btn');
-	const loginPage = getById('login-page');
-
-	goDeepButton.addEventListener(click, () => {
-		if (!loginPage.classList.contains(flexActive)) {
-			toggleClass(loginPage, flexActive);
-		}
-	});
-}
-
-triggerLogin();
-
 function login() {
 	const loginPage = getById('login-page');
-	const passwordInput = getById('password-input');
-	const loginButton = getById('login-btn');
 	const password = '4787';
-	const exitButton = getById('exit-btn');
+	const passWordLabel = getById('password-label');
+	const passwordInput = getById('password-input');
 
-	loginButton.addEventListener(click, () => {
-		if (passwordInput.value === password) {
-			toggleClass(loginPage, flexInactive);
-			loginButton.href = './darkMemory.html';
-		} else if (passwordInput.value === '') {
-			alert('You Must Enter a passcode!!!');
-		} else {
-			alert('Passcode Is Incorrect!');
-		}
-	});
-
-	passwordInput.addEventListener('keydown', (e) => {
-		const passwordLabel = getById('password-label');
-
-		if (e.key === 'Enter' && passwordInput.value === password) {
-			loginButton.style.backgroundColor = 'var(--accent-bright)';
-			loginButton.style.color = 'var(--accent)';
-			loginButton.style.transform = 'scale(1.2)';
-			setTimeout(() => {
-				loginButton.style.transform = 'scale(1)';
-				loginButton.style.backgroundColor = 'var(--accent)';
-				loginButton.style.color = 'var(--project-color-dark)';
-			}, 1000);
-		} else if (e.key === 'Enter' && passwordInput.value === '') {
-			passwordLabel.style.color = 'var(--accent-bright)';
-			passwordLabel.style.transform = 'scale(1.2)';
-			setTimeout(() => {
-				passwordLabel.style.color = 'var(--font-color)';
-				passwordLabel.style.transform = 'scale(1)';
-			}, 1000);
-		} else if (e.key == 'Enter' && passwordInput.value !== password) {
-			passwordLabel.style.color = 'var(--accent-bright)';
-			passwordLabel.style.transform = 'scale(1.2)';
-			textContent(passwordLabel, 'Incorrect Code!!');
-			setTimeout(() => {
-				passwordLabel.style.color = 'var(--font-color)';
-
-				passwordLabel.style.transform = 'scale(1)';
-				textContent(passwordLabel, 'Enter The Damn Code');
-			}, 2000);
-		}
-	});
-
-	exitButton.addEventListener(click, () => {
-		if (loginPage.classList.contains(flexActive)) {
-			toggleClass(loginPage, flexActive);
-		}
-	});
+	if (passwordInput.value === password) {
+		toggleClass(loginPage, flexInactive);
+	} else if (passwordInput.value === '') {
+		passWordLabel.style.color = 'var(--accent-bright)';
+		passWordLabel.style.transform = 'scale(1.3)';
+		setTimeout(() => {
+			passWordLabel.style.transform = 'scale(1)';
+		}, 1000);
+	} else if (passwordInput.value !== password) {
+		passWordLabel.style.color = 'var(--accent-bright)';
+		passWordLabel.style.transform = 'scale(1.3)';
+		textContent(passWordLabel, 'Wrong Code Foo!');
+		setTimeout(() => {
+			passWordLabel.style.transform = 'scale(1)';
+			textContent(passWordLabel, 'Enter The Damn Code');
+		}, 1000);
+		setTimeout(() => {
+			passWordLabel.style.transform = 'scale(1.2)';
+		}, 2000);
+		setTimeout(() => {
+			passWordLabel.style.transform = 'scale(1)';
+		}, 3000);
+	}
 }
+const loginButton = getById('login-btn').addEventListener(click, login);
 
-login();
+const passwordInput = getById('password-input').addEventListener('keydown', (e) => {
+	if (e.key === 'Enter') {
+		login();
+	}
+});
