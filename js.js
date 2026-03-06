@@ -22,7 +22,6 @@ function triggerLogin() {
 	goDeepButton.addEventListener(click, () => {
 		if (!loginPage.classList.contains(flexActive)) {
 			toggleClass(loginPage, flexActive);
-			console.log('Trigger 0');
 		}
 	});
 }
@@ -40,7 +39,6 @@ function login() {
 		if (passwordInput.value === password) {
 			toggleClass(loginPage, flexInactive);
 			loginButton.href = './darkMemory.html';
-			console.log('Trigger1');
 		} else if (passwordInput.value === '') {
 			alert('You Must Enter a passcode!!!');
 		} else {
@@ -83,7 +81,6 @@ function login() {
 	exitButton.addEventListener(click, () => {
 		if (loginPage.classList.contains(flexActive)) {
 			toggleClass(loginPage, flexActive);
-			console.log('Trigger 2');
 		}
 	});
 }
