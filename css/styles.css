@@ -112,6 +112,65 @@ header {
 	transition: all ease 0.5s;
 }
 
+/* ++Depression Info Section 	*/
+.depression-info-section {
+	width: 100%;
+	height: auto;
+	flex-wrap: wrap;
+	flex-direction: column;
+	position: relative;
+}
+
+.depression-overview {
+	color: var(--font-color);
+	font-size: 1rem;
+	font-weight: 600;
+	line-height: 1.5;
+	letter-spacing: 1.5px;
+	text-align: center;
+	text-shadow: var(--text-shadow);
+}
+
+.depression-headers {
+	font-size: 2rem;
+	font-family: var(--project-font);
+	color: var(--accent);
+	text-shadow: var(--text-shadow);
+	letter-spacing: 1.5px;
+}
+
+.depression-names-container {
+	width: 100%;
+	height: auto;
+	justify-content: space-evenly;
+	margin-bottom: 50px;
+	flex-wrap: wrap;
+	gap: 30px;
+}
+
+.depression-type-container {
+	width: 280px;
+	height: 320px;
+	border-radius: 20px;
+	border: 2px outset var(--accent);
+	flex-direction: column;
+	background: linear-gradient(var(--project-color-dark), var(--project-color-dark));
+	text-align: center;
+}
+
+.depression-type-container > a {
+	height: 45px;
+}
+
+.depression-type {
+	color: var(--font-color);
+	font-size: 1.2rem;
+	text-shadow: var(--text-shadow);
+	font-weight: 400;
+}
+
+/* ++Toggle Flex (JS-use) */
+
 .flex-active {
 	display: flex;
 }
