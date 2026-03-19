@@ -130,30 +130,28 @@ const depressionObj = [
 	},
 ];
 
-const depressionNamesContainer = getById('depression-names-container');
-
 function addTypeCard(obj) {
-	const depressionNamesContainer = getById('depression-names-container');
-	const typeContainer = createElement('div');
+	const depressionCardsContainer = getById('depression-cards-container');
+	const depressionCard = createElement('div');
 	const typeName = createElement('h4');
 	const viewMoreBtn = createElement('a');
 	const typeSignHolder = [];
 
 	for (let i = 0; i < 3; i++) {
-		typeSignHolder.push(createElement('p'));
+		typeSignHolder.push(createElement('li'));
 	}
 
-	addClass(typeContainer, 'depression-type-container');
-	addClass(typeContainer, 'container');
+	addClass(depressionCard, 'depression-card');
+	addClass(depressionCard, 'container');
 	addClass(viewMoreBtn, 'cta-btn');
 
-	addClass(typeName, 'depression-type');
+	addClass(typeName, 'depression-type-name');
 
-	appendChild(depressionNamesContainer, typeContainer);
-	appendChild(typeContainer, typeName);
+	appendChild(depressionCardsContainer, depressionCard);
+	appendChild(depressionCard, typeName);
 
 	for (let sign of typeSignHolder) {
-		appendChild(typeContainer, sign);
+		appendChild(depressionCard, sign);
 		addClass(sign, 'type-sign');
 	}
 
@@ -162,7 +160,7 @@ function addTypeCard(obj) {
 	textContent(sign2, obj.signs.at(1));
 	textContent(sign3, obj.signs.at(2));
 
-	appendChild(typeContainer, viewMoreBtn);
+	appendChild(depressionCard, viewMoreBtn);
 
 	textContent(typeName, obj.type);
 
