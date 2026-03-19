@@ -55,14 +55,16 @@ function login() {
 
 const depressionObj = [
 	{
-		type: 'Major Depressive Disorder (Clinical Depression)',
+		type: 'Major Depressive Disorder',
+		subTittle: 'Clinical Depression',
 		href: 'https://www.mayoclinic.org/diseases-conditions/depression/symptoms-causes/syc-20356007',
 		state1: null,
 		state2: 'Symptoms typically last 2 week and affect daily functioning.',
 		signs: ['Sad Mood', 'No Interest', 'Low Energy'],
 	},
 	{
-		type: 'Persistent Depressive Disorder (Dysthymia)',
+		type: 'Persistent Depressive Disorder',
+		subTittle: 'Dysthymia,',
 		href: '',
 		state1: 'A long-term, chronic form of depression lasting 2 years or more.',
 		state2: 'Symptoms are usually less sever than major depression but longer lasting',
@@ -70,7 +72,8 @@ const depressionObj = [
 	},
 
 	{
-		type: 'Bipolar Disorder (Depressive Episodes)',
+		type: 'Bipolar Disorder ',
+		subTittle: 'Depressive Episodes',
 		href: '',
 		state1: 'People experience cycles of depression and mania/hypomania',
 		state2: 'Mani phases involve elevated mood, impulsivity, and high energy',
@@ -78,7 +81,8 @@ const depressionObj = [
 	},
 
 	{
-		type: 'Seasonal Affective Disorder (SAD)',
+		type: 'Seasonal Affective Disorder',
+		subTittle: 'SAD',
 		href: '',
 		state1: 'Depression that occurs seasonally, ofter during winter',
 		state2: null,
@@ -87,13 +91,15 @@ const depressionObj = [
 
 	{
 		type: 'Postpartum Depression',
+		subTittle: null,
 		href: '',
 		state1: 'Depression that occurs during pregnancy or after childbirth',
 		state2: null,
 		signs: ['Mood Swings', 'Bonding Issues', 'Extreme Tiredness'],
 	},
 	{
-		type: 'Premenstrual Dysphoric Disorder (PMDD)',
+		type: 'Premenstrual Dysphoric Disorder',
+		subTittle: 'PMDD',
 		href: '',
 		state1: 'A sever form of premenstrual mood disorder',
 		state2: null,
@@ -102,6 +108,7 @@ const depressionObj = [
 
 	{
 		type: 'Atypical Depression',
+		subTittle: null,
 		href: '',
 		state1: 'A subtype of major depression with different symptom patterns',
 		state2: null,
@@ -110,13 +117,17 @@ const depressionObj = [
 
 	{
 		type: 'Psychotic Depression',
+		subTittle: null,
 		href: '',
 		state1: 'Severe depression with psychotic symptoms.',
+		state2: null,
+
 		signs: ['Sever Sadness', 'Hallucinations', 'Paranoia'],
 	},
 
 	{
-		type: 'Situational Depression (Adjustment Disorder with Depressed Mood)',
+		type: 'Situational Depression ',
+		subTittle: 'Adjustment Disorder with Depressed Mood',
 		href: '',
 		state1: 'Triggered by a specific stressful life event',
 		state2: 'Common triggers include loss, divorce, job loss, or trauma',
@@ -124,9 +135,15 @@ const depressionObj = [
 	},
 
 	{
-		type: 'Common Signs (All Depression)',
-		href: '',
+		type: 'Common Signs',
+		subTittle: 'Dive Deeper',
+		href: '#',
 		signs: ['Low Mood', 'Low Energy', 'Loss of interest'],
+
+		state1: `After  deeper dive into depression and it's signs...`,
+		state2: 'View my personal experiences... is it depression or something else?',
+
+		signs: ['Event-related Sadness', 'Crying', 'Trouble Coping'],
 	},
 ];
 
@@ -135,6 +152,8 @@ function addTypeCard(obj) {
 	const depressionCard = createElement('div');
 	const typeName = createElement('h4');
 	const viewMoreBtn = createElement('a');
+	const statementContainer = createElement('div');
+
 	const typeSignHolder = [];
 
 	for (let i = 0; i < 3; i++) {
@@ -143,12 +162,35 @@ function addTypeCard(obj) {
 
 	addClass(depressionCard, 'depression-card');
 	addClass(depressionCard, 'container');
-	addClass(viewMoreBtn, 'cta-btn');
+
+	if (obj.subTittle != null) {
+		const subTittle = createElement('span');
+
+		textContent(subTittle, obj.subTittle);
+		appendChild(depressionCard, subTittle);
+		addClass(subTittle, 'container');
+		addClass(subTittle, 'subTittle-span');
+	}
+
+	if (obj.state1 != null) {
+		const statement1 = createElement('p');
+		appendChild(statementContainer, statement1);
+		textContent(statement1, obj.state1);
+	}
+	if (obj.state2 != null) {
+		const statement2 = createElement('p');
+		appendChild(statementContainer, statement2);
+		textContent(statement2, obj.state2);
+	}
 
 	addClass(typeName, 'depression-type-name');
+	addClass(viewMoreBtn, 'cta-btn');
+	addClass(statementContainer, 'statement-container');
+	addClass(statementContainer, 'container');
 
 	appendChild(depressionCardsContainer, depressionCard);
 	appendChild(depressionCard, typeName);
+	appendChild(depressionCard, statementContainer);
 
 	for (let sign of typeSignHolder) {
 		appendChild(depressionCard, sign);
