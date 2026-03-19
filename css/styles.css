@@ -150,12 +150,20 @@ header {
 
 .depression-type-container {
 	width: 280px;
-	height: 320px;
+	height: 350px;
 	border-radius: 20px;
 	border: 2px outset var(--accent);
 	flex-direction: column;
 	background: linear-gradient(var(--project-color-dark), var(--project-color-dark));
 	text-align: center;
+}
+
+.type-sign {
+	color: var(--font-color);
+	font-weight: 600;
+	text-shadow: var(--text-shadow);
+	font-size: 1rem;
+	width: 100%;
 }
 
 .depression-type-container > a {

@@ -59,12 +59,14 @@ const depressionObj = [
 		href: 'https://www.mayoclinic.org/diseases-conditions/depression/symptoms-causes/syc-20356007',
 		state1: null,
 		state2: 'Symptoms typically last 2 week and affect daily functioning.',
+		signs: ['Sad Mood', 'No Interest', 'Low Energy'],
 	},
 	{
 		type: 'Persistent Depressive Disorder (Dysthymia)',
 		href: '',
 		state1: 'A long-term, chronic form of depression lasting 2 years or more.',
 		state2: 'Symptoms are usually less sever than major depression but longer lasting',
+		signs: ['Long-term Sadness', 'Low -self-worth', 'Tired Often'],
 	},
 
 	{
@@ -72,6 +74,7 @@ const depressionObj = [
 		href: '',
 		state1: 'People experience cycles of depression and mania/hypomania',
 		state2: 'Mani phases involve elevated mood, impulsivity, and high energy',
+		signs: ['Deep Sadness', 'No Motivation', 'Poor Sleep'],
 	},
 
 	{
@@ -79,6 +82,7 @@ const depressionObj = [
 		href: '',
 		state1: 'Depression that occurs seasonally, ofter during winter',
 		state2: null,
+		signs: ['Seasonal Sadness', 'Low Energy', 'Oversleeping'],
 	},
 
 	{
@@ -86,12 +90,14 @@ const depressionObj = [
 		href: '',
 		state1: 'Depression that occurs during pregnancy or after childbirth',
 		state2: null,
+		signs: ['Mood Swings', 'Bonding Issues', 'Extreme Tiredness'],
 	},
 	{
 		type: 'Premenstrual Dysphoric Disorder (PMDD)',
 		href: '',
 		state1: 'A sever form of premenstrual mood disorder',
 		state2: null,
+		signs: ['Mood Swings', 'Irritability', 'Anxiety'],
 	},
 
 	{
@@ -99,25 +105,28 @@ const depressionObj = [
 		href: '',
 		state1: 'A subtype of major depression with different symptom patterns',
 		state2: null,
+		signs: ['Mood Lifts Briefly', 'More Eating', 'More Sleeping'],
 	},
 
 	{
 		type: 'Psychotic Depression',
 		href: '',
 		state1: 'Severe depression with psychotic symptoms.',
+		signs: ['Sever Sadness', 'Hallucinations', 'Paranoia'],
 	},
 
 	{
 		type: 'Situational Depression (Adjustment Disorder with Depressed Mood)',
 		href: '',
-
 		state1: 'Triggered by a specific stressful life event',
 		state2: 'Common triggers include loss, divorce, job loss, or trauma',
+		signs: ['Event-related Sadness', 'Crying', 'Trouble Coping'],
 	},
 
 	{
 		type: 'Common Signs (All Depression)',
 		href: '',
+		signs: ['Low Mood', 'Low Energy', 'Loss of interest'],
 	},
 ];
 
@@ -128,6 +137,11 @@ function addTypeCard(obj) {
 	const typeContainer = createElement('div');
 	const typeName = createElement('h4');
 	const viewMoreBtn = createElement('a');
+	const typeSignHolder = [];
+
+	for (let i = 0; i < 3; i++) {
+		typeSignHolder.push(createElement('p'));
+	}
 
 	addClass(typeContainer, 'depression-type-container');
 	addClass(typeContainer, 'container');
@@ -137,11 +151,23 @@ function addTypeCard(obj) {
 
 	appendChild(depressionNamesContainer, typeContainer);
 	appendChild(typeContainer, typeName);
+
+	for (let sign of typeSignHolder) {
+		appendChild(typeContainer, sign);
+		addClass(sign, 'type-sign');
+	}
+
+	const [sign1, sign2, sign3] = typeSignHolder;
+	textContent(sign1, obj.signs.at(0));
+	textContent(sign2, obj.signs.at(1));
+	textContent(sign3, obj.signs.at(2));
+
 	appendChild(typeContainer, viewMoreBtn);
 
 	textContent(typeName, obj.type);
 
 	textContent(viewMoreBtn, 'View More');
+
 	viewMoreBtn.href = obj.href;
 	viewMoreBtn.target = '_blank';
 }
