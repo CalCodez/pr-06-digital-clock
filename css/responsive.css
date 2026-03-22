@@ -1,0 +1,18 @@
+/* !!820(iPad) */
+
+@media (min-width: 469px) and (max-width: 820px) {
+	.get-help-container {
+		outline: var(--ol);
+		width: 90%;
+	}
+}
+
+/* ++467 */
+@media (max-width: 468px) {
+	.get-help-container {
+		outline: var(--ol);
+		flex-wrap: wrap;
+		height: auto;
+		text-align: center;
+	}
+}
