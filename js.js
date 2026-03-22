@@ -65,7 +65,7 @@ const depressionObj = [
 	{
 		type: 'Persistent Depressive Disorder',
 		subTittle: 'Dysthymia,',
-		href: '',
+		href: 'https://www.mayoclinic.org/diseases-conditions/persistent-depressive-disorder/symptoms-causes/syc-20350929',
 		state1: 'A long-term, chronic form of depression lasting 2 years or more.',
 		state2: 'Symptoms are usually less sever than major depression but longer lasting',
 		signs: ['Long-term Sadness', 'Low -self-worth', 'Tired Often'],
@@ -74,7 +74,7 @@ const depressionObj = [
 	{
 		type: 'Bipolar Disorder ',
 		subTittle: 'Depressive Episodes',
-		href: '',
+		href: 'https://www.webmd.com/bipolar-disorder/depression-symptoms',
 		state1: 'People experience cycles of depression and mania/hypomania',
 		state2: 'Mani phases involve elevated mood, impulsivity, and high energy',
 		signs: ['Deep Sadness', 'No Motivation', 'Poor Sleep'],
@@ -83,7 +83,7 @@ const depressionObj = [
 	{
 		type: 'Seasonal Affective Disorder',
 		subTittle: 'SAD',
-		href: '',
+		href: 'https://www.mayoclinic.org/diseases-conditions/seasonal-affective-disorder/symptoms-causes/syc-20364651',
 		state1: 'Depression that occurs seasonally, ofter during winter',
 		state2: null,
 		signs: ['Seasonal Sadness', 'Low Energy', 'Oversleeping'],
@@ -92,7 +92,7 @@ const depressionObj = [
 	{
 		type: 'Postpartum Depression',
 		subTittle: null,
-		href: '',
+		href: 'https://www.mayoclinic.org/diseases-conditions/postpartum-depression/symptoms-causes/syc-20376617',
 		state1: 'Depression that occurs during pregnancy or after childbirth',
 		state2: null,
 		signs: ['Mood Swings', 'Bonding Issues', 'Extreme Tiredness'],
@@ -100,7 +100,7 @@ const depressionObj = [
 	{
 		type: 'Premenstrual Dysphoric Disorder',
 		subTittle: 'PMDD',
-		href: '',
+		href: 'https://womenshealth.gov/menstrual-cycle/premenstrual-syndrome/premenstrual-dysphoric-disorder-pm',
 		state1: 'A sever form of premenstrual mood disorder',
 		state2: null,
 		signs: ['Mood Swings', 'Irritability', 'Anxiety'],
@@ -109,7 +109,7 @@ const depressionObj = [
 	{
 		type: 'Atypical Depression',
 		subTittle: null,
-		href: '',
+		href: 'https://my.clevelandclinic.org/health/diseases/21131-atypical-depression',
 		state1: 'A subtype of major depression with different symptom patterns',
 		state2: null,
 		signs: ['Mood Lifts Briefly', 'More Eating', 'More Sleeping'],
@@ -118,7 +118,7 @@ const depressionObj = [
 	{
 		type: 'Psychotic Depression',
 		subTittle: null,
-		href: '',
+		href: 'https://www.nhs.uk/mental-health/conditions/psychotic-depression/',
 		state1: 'Severe depression with psychotic symptoms.',
 		state2: null,
 
@@ -126,22 +126,22 @@ const depressionObj = [
 	},
 
 	{
-		type: 'Situational Depression ',
+		type: 'Situational Depression',
 		subTittle: 'Adjustment Disorder with Depressed Mood',
-		href: '',
+		href: 'https://www.webmd.com/depression/situational-depression',
 		state1: 'Triggered by a specific stressful life event',
 		state2: 'Common triggers include loss, divorce, job loss, or trauma',
 		signs: ['Event-related Sadness', 'Crying', 'Trouble Coping'],
 	},
 
 	{
-		type: 'Common Signs',
+		type: 'Fuck Shit',
 		subTittle: 'Dive Deeper',
 		href: '#',
 		signs: ['Low Mood', 'Low Energy', 'Loss of interest'],
 
-		state1: `After  deeper dive into depression and it's signs...`,
-		state2: 'View my personal experiences... is it depression or something else?',
+		state1: `There is a common fact about life I think every human can agree with... And that is Everybody go through shit. That's Life.`,
+		state2: `However, there are some humans in life that life goes through them... and it's NOT normal. What does that mean...? Dive Deeper?`,
 
 		signs: ['Event-related Sadness', 'Crying', 'Trouble Coping'],
 	},
