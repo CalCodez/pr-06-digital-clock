@@ -121,6 +121,14 @@ header {
 	position: relative;
 }
 
+.depression-headers {
+	font-size: 2rem;
+	font-family: var(--project-font);
+	color: var(--accent);
+	text-shadow: var(--text-shadow);
+	letter-spacing: 1.5px;
+}
+
 .depression-overview {
 	color: var(--font-color);
 	font-size: 1rem;
@@ -129,14 +137,6 @@ header {
 	letter-spacing: 1.5px;
 	text-align: center;
 	text-shadow: var(--text-shadow);
-}
-
-.depression-headers {
-	font-size: 2rem;
-	font-family: var(--project-font);
-	color: var(--accent);
-	text-shadow: var(--text-shadow);
-	letter-spacing: 1.5px;
 }
 
 .depression-cards-container {
@@ -178,10 +178,6 @@ header {
 	box-shadow: 1px 1px 3px 3px var(--black);
 }
 
-.situational-depression-span {
-	width: 150px;
-}
-
 .depression-type-name {
 	color: var(--font-color);
 	font-size: 1rem;
@@ -199,6 +195,11 @@ header {
 	margin-bottom: 10px;
 }
 
+.depression-card-btn-container {
+	width: fit-content;
+	height: fit-content;
+}
+
 .statement-container {
 	position: absolute;
 	background: rgba(0, 0, 0, 0.2);
@@ -209,10 +210,10 @@ header {
 	flex-direction: column;
 	transition: all ease 0.1s;
 	color: var(--accent);
-	visibility: visible;
+	visibility: hidden;
 }
 
-.depression-card > .cta-btn:hover .statement-container {
+.depression-card-btn-container:hover .statement-container {
 	visibility: visible;
 }
 

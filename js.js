@@ -153,6 +153,7 @@ function addTypeCard(obj) {
 	const typeName = createElement('h4');
 	const viewMoreBtn = createElement('a');
 	const statementContainer = createElement('div');
+	const depressionCardBtnContainer = createElement('div');
 
 	const typeSignHolder = [];
 
@@ -187,10 +188,11 @@ function addTypeCard(obj) {
 	addClass(viewMoreBtn, 'cta-btn');
 	addClass(statementContainer, 'statement-container');
 	addClass(statementContainer, 'container');
+	addClass(depressionCardBtnContainer, 'depression-card-btn-container');
+	addClass(depressionCardBtnContainer, 'container');
 
 	appendChild(depressionCardsContainer, depressionCard);
 	appendChild(depressionCard, typeName);
-	appendChild(depressionCard, statementContainer);
 
 	for (let sign of typeSignHolder) {
 		appendChild(depressionCard, sign);
@@ -201,8 +203,10 @@ function addTypeCard(obj) {
 	textContent(sign1, obj.signs.at(0));
 	textContent(sign2, obj.signs.at(1));
 	textContent(sign3, obj.signs.at(2));
+	appendChild(depressionCard, depressionCardBtnContainer);
 
-	appendChild(depressionCard, viewMoreBtn);
+	appendChild(depressionCardBtnContainer, viewMoreBtn);
+	appendChild(depressionCardBtnContainer, statementContainer);
 
 	textContent(typeName, obj.type);
 
