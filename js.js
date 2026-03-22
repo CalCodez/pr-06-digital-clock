@@ -147,7 +147,7 @@ const depressionObj = [
 	},
 ];
 
-function addTypeCard(obj) {
+function createTypeCard(obj) {
 	const depressionCardsContainer = getById('depression-cards-container');
 	const depressionCard = createElement('div');
 	const typeName = createElement('h4');
@@ -161,6 +161,10 @@ function addTypeCard(obj) {
 		typeSignHolder.push(createElement('li'));
 	}
 
+	textContent(typeSignHolder.at(0), obj.signs.at(0));
+	textContent(typeSignHolder.at(1), obj.signs.at(1));
+	textContent(typeSignHolder.at(2), obj.signs.at(2));
+
 	addClass(depressionCard, 'depression-card');
 	addClass(depressionCard, 'container');
 
@@ -168,9 +172,11 @@ function addTypeCard(obj) {
 		const subTittle = createElement('span');
 
 		textContent(subTittle, obj.subTittle);
-		appendChild(depressionCard, subTittle);
+
 		addClass(subTittle, 'container');
 		addClass(subTittle, 'subTittle-span');
+
+		appendChild(depressionCard, subTittle);
 	}
 
 	if (obj.state1 != null) {
@@ -191,7 +197,6 @@ function addTypeCard(obj) {
 	addClass(depressionCardBtnContainer, 'depression-card-btn-container');
 	addClass(depressionCardBtnContainer, 'container');
 
-	appendChild(depressionCardsContainer, depressionCard);
 	appendChild(depressionCard, typeName);
 
 	for (let sign of typeSignHolder) {
@@ -199,23 +204,18 @@ function addTypeCard(obj) {
 		addClass(sign, 'type-sign');
 	}
 
-	const [sign1, sign2, sign3] = typeSignHolder;
-	textContent(sign1, obj.signs.at(0));
-	textContent(sign2, obj.signs.at(1));
-	textContent(sign3, obj.signs.at(2));
-	appendChild(depressionCard, depressionCardBtnContainer);
-
 	appendChild(depressionCardBtnContainer, viewMoreBtn);
 	appendChild(depressionCardBtnContainer, statementContainer);
+	appendChild(depressionCard, depressionCardBtnContainer);
 
 	textContent(typeName, obj.type);
-
 	textContent(viewMoreBtn, 'View More');
 
 	viewMoreBtn.href = obj.href;
 	viewMoreBtn.target = '_blank';
+	appendChild(depressionCardsContainer, depressionCard);
 }
 
 depressionObj.forEach((type) => {
-	addTypeCard(type);
+	createTypeCard(type);
 });
