@@ -136,14 +136,14 @@ const depressionObj = [
 
 	{
 		type: 'Fuck Shit',
-		subTittle: 'Dive Deeper',
+		subTittle: 'Memory Lane',
 		href: '#',
 		signs: ['Low Mood', 'Low Energy', 'Loss of interest'],
 
 		state1: `There is a common fact about life I think every human can agree with... And that is Everybody go through shit. That's Life.`,
 		state2: `However, there are some humans in life that life goes through them... and it's NOT normal. What does that mean...? Dive Deeper?`,
 
-		signs: ['Event-related Sadness', 'Crying', 'Trouble Coping'],
+		signs: ['Personal Stories', 'Videos', 'Rants'],
 	},
 ];
 
