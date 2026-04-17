@@ -151,7 +151,7 @@ function createTypeCard(obj) {
 	const depressionCardsContainer = getById('depression-cards-container');
 	const depressionCard = createElement('div');
 	const typeName = createElement('h4');
-	const viewMoreBtn = createElement('a');
+	const learnMoreBtn = createElement('a');
 	const statementContainer = createElement('div');
 	const depressionCardBtnContainer = createElement('div');
 
@@ -191,7 +191,7 @@ function createTypeCard(obj) {
 	}
 
 	addClass(typeName, 'depression-type-name');
-	addClass(viewMoreBtn, 'cta-btn');
+	addClass(learnMoreBtn, 'cta-btn');
 	addClass(statementContainer, 'statement-container');
 	addClass(statementContainer, 'container');
 	addClass(depressionCardBtnContainer, 'depression-card-btn-container');
@@ -204,18 +204,199 @@ function createTypeCard(obj) {
 		addClass(sign, 'type-sign');
 	}
 
-	appendChild(depressionCardBtnContainer, viewMoreBtn);
+	appendChild(depressionCardBtnContainer, learnMoreBtn);
 	appendChild(depressionCardBtnContainer, statementContainer);
 	appendChild(depressionCard, depressionCardBtnContainer);
 
 	textContent(typeName, obj.type);
-	textContent(viewMoreBtn, 'View More');
+	textContent(learnMoreBtn, 'Learn More');
 
-	viewMoreBtn.href = obj.href;
-	viewMoreBtn.target = '_blank';
+	learnMoreBtn.href = obj.href;
+	learnMoreBtn.target = '_blank';
 	appendChild(depressionCardsContainer, depressionCard);
 }
 
 depressionObj.forEach((type) => {
 	createTypeCard(type);
+});
+
+//++Personality Disorder
+
+const personalityDisorders = [
+	{
+		name: 'Paranoid ',
+		signs: [
+			'Distrust others without clear reason',
+			'Believes others intend harm or deception',
+			'Holds grudges and is unforgiving',
+		],
+		cluster: 'A',
+		href: 'https://www.mayoclinic.org/diseases-conditions/paranoid-personality-disorder/symptoms-causes/syc-20354463',
+	},
+
+	{
+		name: 'Schizoid ',
+		signs: [
+			'Prefers being alone (little interest in relationships)',
+			'Limited emotional expression',
+			'Indifferent to praise or criticism',
+		],
+		cluster: 'A',
+		href: 'https://my.clevelandclinic.org/health/diseases/23030-schizoid-personality-disorder',
+	},
+
+	{
+		name: 'Schizotypal ',
+		signs: [
+			'Odd beliefs or magical thinking',
+			'Unusual speech or behavior',
+			'Social anxiety with paranoid fears',
+		],
+		cluster: 'A',
+		href: 'https://my.clevelandclinic.org/health/diseases/23061-schizotypal-personality-disorder',
+	},
+
+	{
+		name: 'Antisocial ',
+		signs: [
+			'Disregards rules and laws',
+			'Manipulative or deceitful behavior',
+			'Lack of remorse for harm',
+		],
+		cluster: 'B',
+		href: 'https://www.mayoclinic.org/diseases-conditions/antisocial-personality-disorder/symptoms-causes/syc-20353928',
+	},
+
+	{
+		name: 'Borderline ',
+		signs: ['Intense mood swings', 'Fear of abandonment', 'Unstable relationships'],
+		cluster: 'B',
+		href: 'https://www.nimh.nih.gov/health/topics/borderline-personality-disorder',
+	},
+	{
+		name: 'Histrionic ',
+		signs: [
+			'Seeks constant attention',
+			'Overly dramatic or emotional',
+			'Easily influenced by others',
+		],
+		cluster: 'B',
+		href: 'https://my.clevelandclinic.org/health/diseases/9743-histrionic-personality-disorder',
+	},
+	{
+		name: 'Narcissistic ',
+		signs: ['Inflated sense of self-importance', 'Needs excessive admiration', 'Lack of empathy'],
+		cluster: 'B',
+		href: 'https://my.clevelandclinic.org/health/diseases/9742-narcissistic-personality-disorder',
+	},
+
+	{
+		name: 'Avoidant ',
+		signs: [
+			'Avoids social interaction due to fear',
+			'Feels inadequate or inferior',
+			'Highly sensitive to criticism',
+		],
+		cluster: 'C',
+		href: 'https://my.clevelandclinic.org/health/diseases/9761-avoidant-personality-disorder',
+	},
+
+	{
+		name: 'Dependent ',
+		signs: [
+			'Needs excessive reassurance',
+			'Difficulty making decisions alone',
+			'Fear of being alone',
+		],
+		cluster: 'C',
+		href: 'https://my.clevelandclinic.org/health/diseases/9783-dependent-personality-disorder',
+	},
+	{
+		name: 'Obsessive-Compulsive ',
+		signs: [
+			'Preoccupied with order and rules',
+			'Perfectionism that delays tasks',
+			'Rigid and controlling behavior',
+		],
+		cluster: 'C',
+		href: 'https://my.clevelandclinic.org/health/diseases/9490-ocd-obsessive-compulsive-disorder',
+	},
+];
+
+const clusterA = 'Odd / Eccentric';
+const clusterB = 'Dramatic / Emotional / Erratic';
+const clusterC = ' Anxious / Fearful';
+
+function generatePersonalityDisorderCard(obj) {
+	const parentContainer = getById('personality-disorder-card-wrapper');
+
+	const personalityCard = createElement('div');
+	addClass(personalityCard, 'personality-card');
+	addClass(personalityCard, 'container');
+
+	const personalityInfoContainer = createElement('div');
+	addClass(personalityInfoContainer, 'personality-info-container');
+	addClass(personalityInfoContainer, 'container');
+	appendChild(personalityCard, personalityInfoContainer);
+
+	const personalityName = createElement('h2');
+	addClass(personalityName, 'personality-name');
+	textContent(personalityName, obj.name);
+	appendChild(personalityInfoContainer, personalityName);
+
+	const clusterGroup = createElement('h3');
+	addClass(clusterGroup, 'cluster-group');
+	if (obj.cluster == 'A') {
+		textContent(clusterGroup, clusterA);
+	}
+	if (obj.cluster == 'B') {
+		textContent(clusterGroup, clusterB);
+	}
+	if (obj.cluster == 'C') {
+		textContent(clusterGroup, clusterC);
+	}
+	appendChild(personalityInfoContainer, clusterGroup);
+
+	const clusterGroupLetter = createElement('h4');
+	addClass(clusterGroupLetter, 'cluster-group-letter');
+	textContent(clusterGroupLetter, `Cluster: ${obj.cluster}`);
+	appendChild(personalityInfoContainer, clusterGroupLetter);
+
+	const signsHolder = [];
+
+	const personalitySignsContainer = createElement('div');
+	addClass(personalitySignsContainer, 'personality-signs-container');
+	addClass(personalitySignsContainer, 'container');
+	appendChild(personalityCard, personalitySignsContainer);
+
+	for (let i = 0; i < 3; i++) {
+		signsHolder.push(createElement('li'));
+	}
+
+	for (let signs of signsHolder) {
+		appendChild(personalitySignsContainer, signs);
+	}
+
+	textContent(signsHolder.at(0), obj.signs.at(0));
+	textContent(signsHolder.at(1), obj.signs.at(1));
+	textContent(signsHolder.at(2), obj.signs.at(2));
+
+	const personalityLearnMoreBtnContainer = createElement('div');
+	addClass(personalityLearnMoreBtnContainer, 'personality-learn-more-btn-container');
+	appendChild(personalitySignsContainer, personalityLearnMoreBtnContainer);
+
+	const learnMoreBtn = createElement('a');
+	textContent(learnMoreBtn, 'Learn More');
+	addClass(learnMoreBtn, 'cta-btn');
+
+	appendChild(personalityLearnMoreBtnContainer, learnMoreBtn);
+
+	learnMoreBtn.href = obj.href;
+	learnMoreBtn.target = '_blank';
+
+	appendChild(parentContainer, personalityCard);
+}
+
+personalityDisorders.forEach((card) => {
+	generatePersonalityDisorderCard(card);
 });

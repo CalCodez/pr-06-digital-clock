@@ -220,6 +220,74 @@ header {
 	visibility: visible;
 }
 
+/* **Personality Disorder */
+
+.personality-disorder-info-section {
+	flex-direction: column;
+}
+
+.personality-disorder-card-wrapper {
+	margin: 30px;
+	height: auto;
+	justify-content: space-evenly;
+	row-gap: 20px;
+	width: 100%;
+	flex-wrap: wrap;
+}
+
+.personality-card {
+	width: 560zpx;
+	height: auto;
+	flex-wrap: wrap;
+	border: 3px outset var(--accent);
+	box-shadow: 2px 2px 8px 2px var(--black);
+	border-radius: 15px;
+	padding: 8px;
+}
+
+.personality-card > div {
+	height: 260px;
+	width: 280px;
+	flex-direction: column;
+}
+
+.personality-info-container {
+	text-shadow: 2px 2px 2px var(--black);
+	background: linear-gradient(90deg, var(--project-color-light), var(--project-color-dark));
+}
+.personality-name {
+	font-size: 2rem;
+	text-decoration: underline;
+	color: var(--accent);
+	text-align: center;
+}
+
+.cluster-group {
+	color: var(--accent-bright);
+	font-size: 1rem;
+}
+
+.cluster-group-letter {
+	color: var(--accent);
+}
+
+.personality-signs-container {
+	justify-content: space-evenly;
+}
+
+.personality-signs-container > li {
+	font-weight: 600;
+	font-style: italic;
+	color: var(--accent);
+	text-align: center;
+}
+.personality-learn-more-btn-container {
+	height: 40px;
+	width: 100%;
+	place-items: center;
+	place-content: center;
+}
+
 /* ++Toggle Flex (JS-use) */
 
 .flex-active {
