@@ -45,13 +45,6 @@ function login() {
 		}, 3000);
 	}
 }
-// const loginButton = getById('login-btn').addEventListener(click, login);
-
-// const passwordInput = getById('password-input').addEventListener('keydown', (e) => {
-// 	if (e.key === 'Enter') {
-// 		login();
-// 	}
-// });
 
 //**Build Anchor Btn */
 
@@ -61,6 +54,13 @@ const buildAnchorTag = (tag, ref, parent) => {
 	textContent(tag, 'Learn More');
 	tag.target = '_blank';
 	appendChild(parent, tag);
+};
+
+//**Add Container Class */
+const addContainerClass = (arr) => {
+	for (let elm of arr) {
+		addClass(elm, 'container');
+	}
 };
 
 const depressionObj = [
@@ -158,34 +158,49 @@ const depressionObj = [
 ];
 
 function createTypeCard(obj) {
-	const depressionCardsContainer = getById('depression-cards-container');
+	const parent = getById('depression-cards-container');
+
+	const addContainerClasses = [];
+
 	const depressionCard = createElement('div');
+	addClass(depressionCard, 'depression-card');
+	addContainerClasses.push(depressionCard);
+
 	const typeName = createElement('h4');
-	const learnMoreBtn = createElement('a');
-	const statementContainer = createElement('div');
-	const depressionCardBtnContainer = createElement('div');
+	addClass(typeName, 'depression-type-name');
+	textContent(typeName, obj.type);
+	appendChild(depressionCard, typeName);
 
 	const typeSignHolder = [];
-
 	for (let i = 0; i < 3; i++) {
 		typeSignHolder.push(createElement('li'));
+	}
+
+	for (let sign of typeSignHolder) {
+		appendChild(depressionCard, sign);
+		addClass(sign, 'type-sign');
 	}
 
 	textContent(typeSignHolder.at(0), obj.signs.at(0));
 	textContent(typeSignHolder.at(1), obj.signs.at(1));
 	textContent(typeSignHolder.at(2), obj.signs.at(2));
 
-	addClass(depressionCard, 'depression-card');
-	addClass(depressionCard, 'container');
+	const statementContainer = createElement('div');
+	addClass(statementContainer, 'statement-container');
+	addContainerClasses.push(statementContainer);
+
+	const depressionCardBtnContainer = createElement('div');
+	addClass(depressionCardBtnContainer, 'depression-card-btn-container');
+	addContainerClasses.push(depressionCardBtnContainer);
+
+	appendChild(depressionCardBtnContainer, statementContainer);
+	appendChild(depressionCard, depressionCardBtnContainer);
 
 	if (obj.subTittle != null) {
 		const subTittle = createElement('span');
-
-		textContent(subTittle, obj.subTittle);
-
-		addClass(subTittle, 'container');
 		addClass(subTittle, 'subTittle-span');
-
+		textContent(subTittle, obj.subTittle);
+		addContainerClasses.push(subTittle);
 		appendChild(depressionCard, subTittle);
 	}
 
@@ -200,26 +215,11 @@ function createTypeCard(obj) {
 		textContent(statement2, obj.state2);
 	}
 
-	addClass(typeName, 'depression-type-name');
-	addClass(learnMoreBtn, 'cta-btn');
-	addClass(statementContainer, 'statement-container');
-	addClass(statementContainer, 'container');
-	addClass(depressionCardBtnContainer, 'depression-card-btn-container');
-	addClass(depressionCardBtnContainer, 'container');
-
-	appendChild(depressionCard, typeName);
-
-	for (let sign of typeSignHolder) {
-		appendChild(depressionCard, sign);
-		addClass(sign, 'type-sign');
-	}
-
-	appendChild(depressionCardBtnContainer, learnMoreBtn);
-	appendChild(depressionCardBtnContainer, statementContainer);
-	appendChild(depressionCard, depressionCardBtnContainer);
-
+	const learnMoreBtn = createElement('a');
 	buildAnchorTag(learnMoreBtn, obj.href, depressionCardBtnContainer);
-	appendChild(depressionCardsContainer, depressionCard);
+
+	addContainerClass(addContainerClasses);
+	appendChild(parent, depressionCard);
 }
 
 depressionObj.forEach((type) => {
@@ -333,16 +333,18 @@ function generatePersonalityDisorderCard(obj) {
 	const clusterA = 'Odd / Eccentric';
 	const clusterB = 'Dramatic / Emotional / Erratic';
 	const clusterC = ' Anxious / Fearful';
-	const parentContainer = getById('personality-disorder-card-wrapper');
+	const parent = getById('personality-disorder-card-wrapper');
+
+	const addContainerClasses = [];
 
 	const personalityCard = createElement('div');
 	addClass(personalityCard, 'personality-card');
-	addClass(personalityCard, 'container');
+	addContainerClasses.push(personalityCard);
 
 	const personalityInfoContainer = createElement('div');
 	addClass(personalityInfoContainer, 'personality-info-container');
-	addClass(personalityInfoContainer, 'container');
 	appendChild(personalityCard, personalityInfoContainer);
+	addContainerClasses.push(personalityInfoContainer);
 
 	const personalityName = createElement('h2');
 	addClass(personalityName, 'personality-name');
@@ -367,12 +369,13 @@ function generatePersonalityDisorderCard(obj) {
 	textContent(clusterGroupLetter, `Cluster: ${obj.cluster}`);
 	appendChild(personalityInfoContainer, clusterGroupLetter);
 
-	const signsHolder = [];
-
 	const personalitySignsContainer = createElement('div');
 	addClass(personalitySignsContainer, 'personality-signs-container');
-	addClass(personalitySignsContainer, 'container');
 	appendChild(personalityCard, personalitySignsContainer);
+
+	addContainerClasses.push(personalitySignsContainer);
+
+	const signsHolder = [];
 
 	for (let i = 0; i < 3; i++) {
 		signsHolder.push(createElement('li'));
@@ -389,11 +392,14 @@ function generatePersonalityDisorderCard(obj) {
 	const personalityLearnMoreBtnContainer = createElement('div');
 	addClass(personalityLearnMoreBtnContainer, 'personality-learn-more-btn-container');
 	appendChild(personalitySignsContainer, personalityLearnMoreBtnContainer);
+	addContainerClasses.push(personalityLearnMoreBtnContainer);
 
 	const learnMoreBtn = createElement('a');
 	buildAnchorTag(learnMoreBtn, obj.href, personalityLearnMoreBtnContainer);
 
-	appendChild(parentContainer, personalityCard);
+	addContainerClass(addContainerClasses);
+
+	appendChild(parent, personalityCard);
 }
 
 personalityDisorders.forEach((card) => {
@@ -488,15 +494,15 @@ const psychoticDisorders = [
 
 function generatePsychoticCard(obj) {
 	const parent = getById('psychotic-disorder-card-wrapper');
-	const addContainerClass = [];
+	const addContainerClasses = [];
 
 	const psychoticCard = createElement('div');
 	addClass(psychoticCard, 'psychotic-card');
-	addContainerClass.push(psychoticCard);
+	addContainerClasses.push(psychoticCard);
 
 	const psychoticInfoContainer = createElement('div');
 	addClass(psychoticInfoContainer, 'psychotic-info-container');
-	addContainerClass.push(psychoticInfoContainer);
+	addContainerClasses.push(psychoticInfoContainer);
 	appendChild(psychoticCard, psychoticInfoContainer);
 
 	const psychoticName = createElement('h2');
@@ -515,7 +521,7 @@ function generatePsychoticCard(obj) {
 	const psychoticSignContainer = createElement('div');
 	addClass(psychoticSignContainer, 'psychotic-signs-container');
 	appendChild(psychoticCard, psychoticSignContainer);
-	addContainerClass.push(psychoticSignContainer);
+	addContainerClasses.push(psychoticSignContainer);
 
 	const signs = [];
 
@@ -532,9 +538,7 @@ function generatePsychoticCard(obj) {
 		appendChild(psychoticSignContainer, sign);
 	}
 
-	for (let elm of addContainerClass) {
-		addClass(elm, 'container');
-	}
+	addContainerClass(addContainerClasses);
 
 	appendChild(parent, psychoticCard);
 }

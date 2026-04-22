@@ -235,7 +235,8 @@ header {
 	row-gap: 20px;
 	width: 100%;
 	flex-wrap: wrap;
-	outline: var(--olO);
+	box-shadow: 3px 3px 5px 0.8px var(--black);
+	padding: 8px 0;
 }
 
 .personality-card,
