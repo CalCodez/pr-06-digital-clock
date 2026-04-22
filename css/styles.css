@@ -222,21 +222,25 @@ header {
 
 /* **Personality Disorder */
 
-.personality-disorder-info-section {
+.personality-disorder-info-section,
+.psychotic-disorder-section {
 	flex-direction: column;
 }
 
-.personality-disorder-card-wrapper {
+.personality-disorder-card-wrapper,
+.psychotic-disorder-card-wrapper {
 	margin: 30px;
 	height: auto;
 	justify-content: space-evenly;
 	row-gap: 20px;
 	width: 100%;
 	flex-wrap: wrap;
+	outline: var(--olO);
 }
 
-.personality-card {
-	width: 560zpx;
+.personality-card,
+.psychotic-card {
+	width: 560px;
 	height: auto;
 	flex-wrap: wrap;
 	border: 3px outset var(--accent);
@@ -245,24 +249,41 @@ header {
 	padding: 8px;
 }
 
-.personality-card > div {
+.personality-card > div,
+.psychotic-card > div {
 	height: 260px;
-	width: 280px;
+	width: 260px;
 	flex-direction: column;
+	border-radius: 6px;
+	text-align: center;
 }
 
-.personality-info-container {
+.personality-info-container,
+.psychotic-info-container {
 	text-shadow: 2px 2px 2px var(--black);
+	place-content: center;
+	place-items: center;
 	background: linear-gradient(90deg, var(--project-color-light), var(--project-color-dark));
 }
-.personality-name {
+
+.personality-name,
+.psychotic-name {
 	font-size: 2rem;
 	text-decoration: underline;
 	color: var(--accent);
 	text-align: center;
 }
 
-.cluster-group {
+.psychotic-name {
+	text-decoration: none;
+}
+
+.psychotic-name {
+	font-size: 1.8rem;
+}
+
+.cluster-group,
+.psychotic-caption {
 	color: var(--accent-bright);
 	font-size: 1rem;
 }
@@ -271,21 +292,33 @@ header {
 	color: var(--accent);
 }
 
-.personality-signs-container {
+.personality-signs-container,
+.psychotic-signs-container {
 	justify-content: space-evenly;
 }
 
-.personality-signs-container > li {
+.personality-signs-container > li,
+.psychotic-signs-container > li {
 	font-weight: 600;
 	font-style: italic;
 	color: var(--accent);
 	text-align: center;
+}
+
+.psychotic-card .personality-signs-container {
+	place-content: center;
+	justify-content: space-evenly;
 }
 .personality-learn-more-btn-container {
 	height: 40px;
 	width: 100%;
 	place-items: center;
 	place-content: center;
+}
+
+.psychotic-card .cta-btn {
+	background: var(--accent);
+	text-shadow: none;
 }
 
 /* ++Toggle Flex (JS-use) */

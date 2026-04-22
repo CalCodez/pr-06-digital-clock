@@ -53,6 +53,16 @@ function login() {
 // 	}
 // });
 
+//**Build Anchor Btn */
+
+const buildAnchorTag = (tag, ref, parent) => {
+	tag.href = ref;
+	addClass(tag, 'cta-btn');
+	textContent(tag, 'Learn More');
+	tag.target = '_blank';
+	appendChild(parent, tag);
+};
+
 const depressionObj = [
 	{
 		type: 'Major Depressive Disorder',
@@ -208,11 +218,7 @@ function createTypeCard(obj) {
 	appendChild(depressionCardBtnContainer, statementContainer);
 	appendChild(depressionCard, depressionCardBtnContainer);
 
-	textContent(typeName, obj.type);
-	textContent(learnMoreBtn, 'Learn More');
-
-	learnMoreBtn.href = obj.href;
-	learnMoreBtn.target = '_blank';
+	buildAnchorTag(learnMoreBtn, obj.href, depressionCardBtnContainer);
 	appendChild(depressionCardsContainer, depressionCard);
 }
 
@@ -323,11 +329,10 @@ const personalityDisorders = [
 	},
 ];
 
-const clusterA = 'Odd / Eccentric';
-const clusterB = 'Dramatic / Emotional / Erratic';
-const clusterC = ' Anxious / Fearful';
-
 function generatePersonalityDisorderCard(obj) {
+	const clusterA = 'Odd / Eccentric';
+	const clusterB = 'Dramatic / Emotional / Erratic';
+	const clusterC = ' Anxious / Fearful';
 	const parentContainer = getById('personality-disorder-card-wrapper');
 
 	const personalityCard = createElement('div');
@@ -386,17 +391,154 @@ function generatePersonalityDisorderCard(obj) {
 	appendChild(personalitySignsContainer, personalityLearnMoreBtnContainer);
 
 	const learnMoreBtn = createElement('a');
-	textContent(learnMoreBtn, 'Learn More');
-	addClass(learnMoreBtn, 'cta-btn');
-
-	appendChild(personalityLearnMoreBtnContainer, learnMoreBtn);
-
-	learnMoreBtn.href = obj.href;
-	learnMoreBtn.target = '_blank';
+	buildAnchorTag(learnMoreBtn, obj.href, personalityLearnMoreBtnContainer);
 
 	appendChild(parentContainer, personalityCard);
 }
 
 personalityDisorders.forEach((card) => {
 	generatePersonalityDisorderCard(card);
+});
+
+//**Mental Health Disorder */
+
+const psychoticDisorders = [
+	{
+		name: 'Schizophrenia',
+		caption: 'A long-term disorder that disrupts reality, thinking, and behavior.',
+		signs: ['Hallucinations', 'Delusions', 'Disorganized speech/Thinking'],
+		href: '#',
+	},
+
+	{
+		name: 'Schizophreniform',
+		caption: 'A shorter-duration version of schizophrenia (1-6 months)',
+		signs: ['Hallucinations', 'Delusions', 'Confused or impaired thinking'],
+		href: '#',
+	},
+
+	{
+		name: 'Brief Psychotic',
+		caption: 'Sudden hallucinations or delusions',
+		signs: ['Sudden hallucinations or delusions', 'Disorganized speech', 'Rapid onset of symptoms'],
+		href: '#',
+	},
+
+	{
+		name: 'Schizoaffective',
+		caption: 'Combines psychotic symptoms with mood disorders.',
+		signs: ['Hallucinations', 'Delusions', 'Disorganized Thinking'],
+		href: '#',
+	},
+
+	{
+		name: 'Delusional',
+		caption: 'Persistent false beliefs without major disruption of functioning',
+		signs: [
+			'Fixed delusions',
+			'Irritability related to beliefs',
+			'Social or relationship difficulties',
+		],
+		href: '#',
+	},
+
+	{
+		name: 'Substance/Med-Induced',
+		caption: 'Psychosis caused by drugs, or medications.',
+		signs: [
+			'Hallucinations or delusions after use',
+			'Confusion/Disorientation',
+			'Symptoms tied to intoxication or withdrawal',
+		],
+		href: '#',
+	},
+	{
+		name: 'Psychotic (Medical Condition)',
+		caption: 'Psychosis resulting from an underlying medical issue',
+		signs: [
+			'Hallucinations or delusions',
+			'Memory or attention problems',
+			'Symptoms linked to illness/injury',
+		],
+		href: '#',
+	},
+	{
+		name: 'Cataonia',
+		caption: 'A condition involving extreme disturbances in movement and responsiveness',
+		signs: ['Little or no movement', 'Excessive or repetitive movement', 'Mutism'],
+		href: '#',
+	},
+	{
+		name: 'Other Specified Schizophrenia Spectrum',
+		caption: `Psychotic symptoms that don't fully match a specific diagnosis`,
+		signs: [
+			'Mixed or unusual symptoms',
+			'Distress or impairment',
+			`Doesn't meet full criteria for another disorder`,
+		],
+		href: '#',
+	},
+	{
+		name: 'Unspecified Schizophrenia Spectrum',
+		caption: `Used when there isn't enough information for a clear diagnosis`,
+		signs: ['General psychotic symptoms', 'Limited clinical details', 'Functional Impairment'],
+		href: '#',
+	},
+];
+
+function generatePsychoticCard(obj) {
+	const parent = getById('psychotic-disorder-card-wrapper');
+	const addContainerClass = [];
+
+	const psychoticCard = createElement('div');
+	addClass(psychoticCard, 'psychotic-card');
+	addContainerClass.push(psychoticCard);
+
+	const psychoticInfoContainer = createElement('div');
+	addClass(psychoticInfoContainer, 'psychotic-info-container');
+	addContainerClass.push(psychoticInfoContainer);
+	appendChild(psychoticCard, psychoticInfoContainer);
+
+	const psychoticName = createElement('h2');
+	addClass(psychoticName, 'psychotic-name');
+	textContent(psychoticName, obj.name);
+	appendChild(psychoticInfoContainer, psychoticName);
+
+	const psychoticCaption = createElement('p');
+	addClass(psychoticCaption, 'psychotic-caption');
+	textContent(psychoticCaption, obj.caption);
+	appendChild(psychoticInfoContainer, psychoticCaption);
+
+	const learnMoreBtn = createElement('a');
+	buildAnchorTag(learnMoreBtn, obj.href, psychoticInfoContainer);
+
+	const psychoticSignContainer = createElement('div');
+	addClass(psychoticSignContainer, 'psychotic-signs-container');
+	appendChild(psychoticCard, psychoticSignContainer);
+	addContainerClass.push(psychoticSignContainer);
+
+	const signs = [];
+
+	for (let i = 0; i < 3; i++) {
+		const li = createElement('li');
+		signs.push(li);
+	}
+
+	textContent(signs.at(0), obj.signs.at(0));
+	textContent(signs.at(1), obj.signs.at(1));
+	textContent(signs.at(2), obj.signs.at(2));
+
+	for (let sign of signs) {
+		appendChild(psychoticSignContainer, sign);
+	}
+
+	for (let elm of addContainerClass) {
+		addClass(elm, 'container');
+	}
+
+	appendChild(parent, psychoticCard);
+}
+
+psychoticDisorders.forEach((card) => {
+	generatePsychoticCard(card);
 });
