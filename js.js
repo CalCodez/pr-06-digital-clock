@@ -228,8 +228,8 @@ function createTypeCard(obj) {
 	const goDeepBtn = getById('go-deep-btn');
 	goDeepBtn.addEventListener(click, () => {
 		if (
-			subtitle.parentElement.id === 'fuck-shit' &&
-			learnMoreBtn.parentElement.parentElement.id === 'fuck-shit'
+			subtitle.parentElement.id !== null &&
+			learnMoreBtn.parentElement.parentElement.id == 'fuck-shit'
 		) {
 			subtitle.parentElement.style.transform = 'scale(1.09)';
 			subtitle.style.backgroundColor = 'var(--accent)';
