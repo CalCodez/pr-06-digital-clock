@@ -298,11 +298,6 @@ header {
 
 /* **Personality Disorder */
 
-.personality-disorder-info-section,
-.psychotic-disorder-section {
-	flex-direction: column;
-}
-
 .personality-disorder-card-wrapper,
 .psychotic-disorder-card-wrapper {
 	margin: 30px;
