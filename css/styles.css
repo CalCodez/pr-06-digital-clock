@@ -4,6 +4,7 @@ header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	position: relative;
 }
 
 .logo-span {
@@ -21,20 +22,38 @@ header {
 	font-family: var(--logo-font);
 }
 
+.nav-wrapper {
+	flex-direction: column;
+	height: 80px;
+	width: 400px;
+}
+
 .main-nav {
 	width: 400px;
-	height: 60px;
 	display: flex;
 	justify-content: space-around;
+	height: 60%;
 	align-items: center;
 }
 
 .main-nav a {
 	color: var(--font-color);
-	font-size: 1.2rem;
+	font-size: 1.16rem;
 	font-weight: 600;
 	text-shadow: var(--text-shadow);
 	letter-spacing: 1.2px;
+}
+
+.nav-wrapper > p {
+	color: var(--accent-bright);
+	font-size: 0.8rem;
+	height: fit-content;
+	width: 100%;
+	text-align: center;
+	font-weight: 600;
+	letter-spacing: 1.2px;
+	margin-top: 2px;
+	text-shadow: 1px 1px 1px var(--black);
 }
 
 .main-nav a:hover,
@@ -47,6 +66,63 @@ header {
 	color: var(--project-color-dark);
 	cursor: pointer;
 	transform: scale(1.1);
+}
+
+.fa-bars {
+	color: var(--accent-bright);
+	position: absolute;
+	right: 14px;
+	top: 12px;
+	font-size: 1.3rem;
+	text-shadow: 1px 2px 2px var(--black);
+	z-index: 4;
+	cursor: pointer;
+	display: none;
+}
+
+.mobile-menu {
+	height: 0px;
+	position: absolute;
+}
+
+.mobile-menu > a {
+	display: none;
+	place-content: center;
+}
+
+.mobile-menu-active {
+	width: 200px;
+	height: 220px;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	z-index: 3;
+	background: linear-gradient(
+		var(--project-color-main),
+		var(--project-color-main),
+		var(--project-color-main),
+		var(--project-color-main),
+		var(--project-color-dark)
+	);
+	flex-direction: column;
+	justify-content: space-evenly;
+	transition: height ease-in 0.3s;
+	box-shadow: 2px 2px 2px 2px var(--project-color-dark);
+}
+
+.mobile-menu-active a {
+	color: var(--accent-bright);
+	font-weight: 600;
+	letter-spacing: 1.2px;
+	width: 100%;
+	text-align: center;
+	font-size: 1.2rem;
+}
+
+.mobile-menu-active > a:hover {
+	background: linear-gradient(var(--project-color-light), var(--accent));
+	transition: all ease-in 0.1s;
+	color: var(--project-color-dark);
 }
 
 /* ++Hero Section */

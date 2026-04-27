@@ -15,39 +15,36 @@ const keyup = 'keyup';
 const flexActive = 'flex-active';
 const flexInactive = 'flex-inactive';
 
-function login() {
-	const loginPage = getById('login-page');
-	const password = '4787';
-	const passWordLabel = getById('password-label');
-	const passwordInput = getById('password-input');
+//**Toggle Mobile Menu */
+function toggleMobileMenu() {
+	const mobileMenuToggle = getById('mobile-menu-toggle');
+	const mobileMenu = getById('mobile-menu');
 
-	if (passwordInput.value === password) {
-		toggleClass(loginPage, flexInactive);
-	} else if (passwordInput.value === '') {
-		passWordLabel.style.color = 'var(--accent-bright)';
-		passWordLabel.style.transform = 'scale(1.3)';
-		setTimeout(() => {
-			passWordLabel.style.transform = 'scale(1)';
-		}, 1000);
-	} else if (passwordInput.value !== password) {
-		passWordLabel.style.color = 'var(--accent-bright)';
-		passWordLabel.style.transform = 'scale(1.3)';
-		textContent(passWordLabel, 'Wrong Code Foo!');
-		setTimeout(() => {
-			passWordLabel.style.transform = 'scale(1)';
-			textContent(passWordLabel, 'Enter The Damn Code');
-		}, 1000);
-		setTimeout(() => {
-			passWordLabel.style.transform = 'scale(1.2)';
-		}, 2000);
-		setTimeout(() => {
-			passWordLabel.style.transform = 'scale(1)';
-		}, 3000);
-	}
+	const mobileMenuActive = 'mobile-menu-active';
+
+	const mobileMenuLinks = selectAll('.mobile-menu-links');
+
+	mobileMenuToggle.addEventListener(click, () => {
+		if (!mobileMenu.classList.contains(mobileMenuActive)) {
+			toggleClass(mobileMenu, mobileMenuActive);
+
+			for (let elm of mobileMenuLinks) {
+				setTimeout(() => {
+					elm.style.display = 'flex';
+				}, 200);
+			}
+		} else {
+			toggleClass(mobileMenu, mobileMenuActive);
+			for (let elm of mobileMenuLinks) {
+				elm.style.display = 'none';
+			}
+		}
+	});
 }
 
-//**Build Anchor Btn */
+toggleMobileMenu();
 
+//**Build Anchor Btn */
 const buildAnchorTag = (tag, ref, parent) => {
 	tag.href = ref;
 	addClass(tag, 'cta-btn');
