@@ -160,7 +160,7 @@ const depressionObj = [
 function createTypeCard(obj) {
 	const parent = getById('depression-cards-container');
 
-	const addContainerClasses = [];
+	const addContainerClasses = Array.of();
 
 	const depressionCard = createElement('div');
 	addClass(depressionCard, 'depression-card');
@@ -171,7 +171,8 @@ function createTypeCard(obj) {
 	textContent(typeName, obj.type);
 	appendChild(depressionCard, typeName);
 
-	const typeSignHolder = [];
+	const typeSignHolder = Array.of();
+
 	for (let i = 0; i < 3; i++) {
 		typeSignHolder.push(createElement('li'));
 	}
@@ -335,7 +336,7 @@ function generatePersonalityDisorderCard(obj) {
 	const clusterC = ' Anxious / Fearful';
 	const parent = getById('personality-disorder-card-wrapper');
 
-	const addContainerClasses = [];
+	const addContainerClasses = Array.of();
 
 	const personalityCard = createElement('div');
 	addClass(personalityCard, 'personality-card');
@@ -375,7 +376,7 @@ function generatePersonalityDisorderCard(obj) {
 
 	addContainerClasses.push(personalitySignsContainer);
 
-	const signsHolder = [];
+	const signsHolder = Array.of();
 
 	for (let i = 0; i < 3; i++) {
 		signsHolder.push(createElement('li'));
@@ -413,28 +414,28 @@ const psychoticDisorders = [
 		name: 'Schizophrenia',
 		caption: 'A long-term disorder that disrupts reality, thinking, and behavior.',
 		signs: ['Hallucinations', 'Delusions', 'Disorganized speech/Thinking'],
-		href: '#',
+		href: 'https://www.webmd.com/schizophrenia/default.htm',
 	},
 
 	{
 		name: 'Schizophreniform',
 		caption: 'A shorter-duration version of schizophrenia (1-6 months)',
 		signs: ['Hallucinations', 'Delusions', 'Confused or impaired thinking'],
-		href: '#',
+		href: 'https://www.webmd.com/schizophrenia/mental-health-schizophreniform-disorder',
 	},
 
 	{
 		name: 'Brief Psychotic',
 		caption: 'Sudden hallucinations or delusions',
 		signs: ['Sudden hallucinations or delusions', 'Disorganized speech', 'Rapid onset of symptoms'],
-		href: '#',
+		href: 'https://www.webmd.com/schizophrenia/mental-health-brief-psychotic-disorder',
 	},
 
 	{
 		name: 'Schizoaffective',
 		caption: 'Combines psychotic symptoms with mood disorders.',
 		signs: ['Hallucinations', 'Delusions', 'Disorganized Thinking'],
-		href: '#',
+		href: 'https://www.webmd.com/schizophrenia/mental-health-schizoaffective-disorder',
 	},
 
 	{
@@ -445,7 +446,7 @@ const psychoticDisorders = [
 			'Irritability related to beliefs',
 			'Social or relationship difficulties',
 		],
-		href: '#',
+		href: 'https://www.webmd.com/schizophrenia/delusional-disorder',
 	},
 
 	{
@@ -456,7 +457,7 @@ const psychoticDisorders = [
 			'Confusion/Disorientation',
 			'Symptoms tied to intoxication or withdrawal',
 		],
-		href: '#',
+		href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8732862/',
 	},
 	{
 		name: 'Psychotic (Medical Condition)',
@@ -466,13 +467,13 @@ const psychoticDisorders = [
 			'Memory or attention problems',
 			'Symptoms linked to illness/injury',
 		],
-		href: '#',
+		href: 'https://www.merckmanuals.com/professional/psychiatric-disorders/schizophrenia-and-related-disorders/psychotic-disorder-due-to-another-medical-condition',
 	},
 	{
 		name: 'Cataonia',
 		caption: 'A condition involving extreme disturbances in movement and responsiveness',
 		signs: ['Little or no movement', 'Excessive or repetitive movement', 'Mutism'],
-		href: '#',
+		href: 'https://www.webmd.com/schizophrenia/mental-catatonic-schizophrenia-overview',
 	},
 	{
 		name: 'Other Specified Schizophrenia Spectrum',
@@ -482,13 +483,13 @@ const psychoticDisorders = [
 			'Distress or impairment',
 			`Doesn't meet full criteria for another disorder`,
 		],
-		href: '#',
+		href: 'https://www.webmd.com/schizophrenia/schizophrenia-types',
 	},
 	{
 		name: 'Unspecified Schizophrenia Spectrum',
 		caption: `Used when there isn't enough information for a clear diagnosis`,
 		signs: ['General psychotic symptoms', 'Limited clinical details', 'Functional Impairment'],
-		href: '#',
+		href: 'https://www.publicsafetymedicine.org/leo/mental-health/schizophrenia-and-other-psychotic-disorders-mental',
 	},
 ];
 
@@ -523,7 +524,7 @@ function generatePsychoticCard(obj) {
 	appendChild(psychoticCard, psychoticSignContainer);
 	addContainerClasses.push(psychoticSignContainer);
 
-	const signs = [];
+	const signs = Array.of();
 
 	for (let i = 0; i < 3; i++) {
 		const li = createElement('li');
