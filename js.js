@@ -63,7 +63,7 @@ const addContainerClass = (arr) => {
 const depressionObj = [
 	{
 		type: 'Major Depressive Disorder',
-		subTittle: 'Clinical Depression',
+		subtitle: 'Clinical Depression',
 		href: 'https://www.mayoclinic.org/diseases-conditions/depression/symptoms-causes/syc-20356007',
 		state1: null,
 		state2: 'Symptoms typically last 2 week and affect daily functioning.',
@@ -71,7 +71,7 @@ const depressionObj = [
 	},
 	{
 		type: 'Persistent Depressive Disorder',
-		subTittle: 'Dysthymia,',
+		subtitle: 'Dysthymia,',
 		href: 'https://www.mayoclinic.org/diseases-conditions/persistent-depressive-disorder/symptoms-causes/syc-20350929',
 		state1: 'A long-term, chronic form of depression lasting 2 years or more.',
 		state2: 'Symptoms are usually less sever than major depression but longer lasting',
@@ -80,7 +80,7 @@ const depressionObj = [
 
 	{
 		type: 'Bipolar Disorder ',
-		subTittle: 'Depressive Episodes',
+		subtitle: 'Depressive Episodes',
 		href: 'https://www.webmd.com/bipolar-disorder/depression-symptoms',
 		state1: 'People experience cycles of depression and mania/hypomania',
 		state2: 'Mani phases involve elevated mood, impulsivity, and high energy',
@@ -89,7 +89,7 @@ const depressionObj = [
 
 	{
 		type: 'Seasonal Affective Disorder',
-		subTittle: 'SAD',
+		subtitle: 'SAD',
 		href: 'https://www.mayoclinic.org/diseases-conditions/seasonal-affective-disorder/symptoms-causes/syc-20364651',
 		state1: 'Depression that occurs seasonally, ofter during winter',
 		state2: null,
@@ -98,7 +98,7 @@ const depressionObj = [
 
 	{
 		type: 'Postpartum Depression',
-		subTittle: null,
+		subtitle: null,
 		href: 'https://www.mayoclinic.org/diseases-conditions/postpartum-depression/symptoms-causes/syc-20376617',
 		state1: 'Depression that occurs during pregnancy or after childbirth',
 		state2: null,
@@ -106,7 +106,7 @@ const depressionObj = [
 	},
 	{
 		type: 'Premenstrual Dysphoric Disorder',
-		subTittle: 'PMDD',
+		subtitle: 'PMDD',
 		href: 'https://womenshealth.gov/menstrual-cycle/premenstrual-syndrome/premenstrual-dysphoric-disorder-pm',
 		state1: 'A sever form of premenstrual mood disorder',
 		state2: null,
@@ -115,7 +115,7 @@ const depressionObj = [
 
 	{
 		type: 'Atypical Depression',
-		subTittle: null,
+		subtitle: null,
 		href: 'https://my.clevelandclinic.org/health/diseases/21131-atypical-depression',
 		state1: 'A subtype of major depression with different symptom patterns',
 		state2: null,
@@ -124,7 +124,7 @@ const depressionObj = [
 
 	{
 		type: 'Psychotic Depression',
-		subTittle: null,
+		subtitle: null,
 		href: 'https://www.nhs.uk/mental-health/conditions/psychotic-depression/',
 		state1: 'Severe depression with psychotic symptoms.',
 		state2: null,
@@ -134,7 +134,7 @@ const depressionObj = [
 
 	{
 		type: 'Situational Depression',
-		subTittle: 'Adjustment Disorder with Depressed Mood',
+		subtitle: 'Adjustment Disorder with Depressed Mood',
 		href: 'https://www.webmd.com/depression/situational-depression',
 		state1: 'Triggered by a specific stressful life event',
 		state2: 'Common triggers include loss, divorce, job loss, or trauma',
@@ -143,7 +143,7 @@ const depressionObj = [
 
 	{
 		type: 'Fuck Shit',
-		subTittle: 'Memory Lane',
+		subtitle: 'Memory Lane',
 		href: '#',
 		signs: ['Low Mood', 'Low Energy', 'Loss of interest'],
 
@@ -162,6 +162,12 @@ function createTypeCard(obj) {
 	const depressionCard = createElement('div');
 	addClass(depressionCard, 'depression-card');
 	addContainerClasses.push(depressionCard);
+
+	if (obj.type === 'Fuck Shit') {
+		depressionCard.id = 'fuck-shit';
+	} else {
+		depressionCard.id = null;
+	}
 
 	const typeName = createElement('h4');
 	addClass(typeName, 'depression-type-name');
@@ -194,12 +200,12 @@ function createTypeCard(obj) {
 	appendChild(depressionCardBtnContainer, statementContainer);
 	appendChild(depressionCard, depressionCardBtnContainer);
 
-	if (obj.subTittle != null) {
-		const subTittle = createElement('span');
-		addClass(subTittle, 'subTittle-span');
-		textContent(subTittle, obj.subTittle);
-		addContainerClasses.push(subTittle);
-		appendChild(depressionCard, subTittle);
+	const subtitle = createElement('span');
+	if (obj.subtitle != null) {
+		addClass(subtitle, 'subtitle-span');
+		textContent(subtitle, obj.subtitle);
+		addContainerClasses.push(subtitle);
+		appendChild(depressionCard, subtitle);
 	}
 
 	if (obj.state1 != null) {
@@ -218,6 +224,24 @@ function createTypeCard(obj) {
 
 	addContainerClass(addContainerClasses);
 	appendChild(parent, depressionCard);
+
+	const goDeepBtn = getById('go-deep-btn');
+	goDeepBtn.addEventListener(click, () => {
+		if (
+			subtitle.parentElement.id === 'fuck-shit' &&
+			learnMoreBtn.parentElement.parentElement.id === 'fuck-shit'
+		) {
+			subtitle.parentElement.style.transform = 'scale(1.09)';
+			subtitle.style.backgroundColor = 'var(--accent)';
+			learnMoreBtn.style.backgroundColor = 'var(--accent)';
+
+			setTimeout(() => {
+				subtitle.parentElement.style.transform = 'scale(1)';
+				subtitle.style.backgroundColor = 'var(--accent-bright)';
+				learnMoreBtn.style.backgroundColor = 'var(--accent-bright)';
+			}, 1000);
+		}
+	});
 }
 
 depressionObj.forEach((type) => {
